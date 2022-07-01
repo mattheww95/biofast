@@ -4,7 +4,14 @@
 *.a
 
 .idea
+biofast-data-v1
 
+# remove build targets
+.*
+**go1
+**kseq
+**klib
+**bin
 
 # Created by https://www.gitignore.io/api/rust
 # Edit at https://www.gitignore.io/?templates=rust
