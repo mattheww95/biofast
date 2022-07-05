@@ -14,7 +14,7 @@ python_normal_tup:
 	$(TIMER) $(TIMER_FLAGS) '$(PYTHON) $(BASEPATH)python_solutions/pure_python/fqcnt_py3_tup.py $(DATA)'
 
 pypy_normal_tup:
-	$(TIMER) $(TIMER_FLAGS) '$(PYPY) $(BASEPATH)python_solutions/pure_python/fqcnt_py3_tup.py $(DATA)'
+	$(TIMER) $(TIMER_FLAGS) '$(PYPY) $(BASEPATH)python_solutions/pure_python/fqcnt_py3_tup.py $(DATA)' 
 
 python_normal_4l:
 	$(TIMER) $(TIMER_FLAGS) '$(PYTHON) $(BASEPATH)python_solutions/pure_python/fqcnt_py1_4l.py $(DATA)'
