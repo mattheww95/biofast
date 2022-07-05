@@ -26,7 +26,7 @@ go_solutions/base_go/fqcnt_go1:go_solutions/base_go/fqcnt_go1.go
 
 .PHONY: fqcnt_rs
 fqcnt_rs:
-	$(CARGO) install --path $(PROJECT_ROOT) --force --bin fqcnt_rustbio --bin fqcnt_needletail --root .
+	$(CARGO) install --path $(PROJECT_ROOT) --force --bin fqcnt_rustbio --bin fqcnt_needletail --root ./rust_solutions
 
 .PHONY: rust
 rust: fqcnt_rs
