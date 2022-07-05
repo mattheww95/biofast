@@ -7,18 +7,20 @@ CARGO=cargo
 AMM=amm
 MILL=mill
 PROJECT_ROOT := $(shell realpath ../)
+INCLUDE=../lib
+
 
 .PHONY:all clean
 
 all:$(PROG)
 
-fqcnt_c1_kseq:fqcnt_c1_kseq.c ../lib/kseq.h
-	$(CC) $(CFLAGS) -I../lib -o $@ $< $(LIBS)
+C_solutions/klib_solutions/fqcnt_c1_kseq:C_solutions/klib_solutions/fqcnt_c1_kseq.c ../../lib/kseq.h
+	$(CC) $(CFLAGS) -I$(INCLUDE) -o $@ $< $(LIBS)
 
-fqcnt_nim1_klib:fqcnt_nim1_klib.nim ../lib/klib.nim
-	$(NIM) c -d:release -d:nimEmulateOverflowChecks --bound_checks:off -p:../lib -o:$@ $<
+nim_solutions/klib_solution/fqcnt_nim1_klib:nim_solutions/klib_solution/fqcnt_nim1_klib.nim ../../lib/klib.nim
+	$(NIM) c -d:release -d:nimEmulateOverflowChecks --bound_checks:off -p:$(INCLUDE) -o:$@ $<
 
-fqcnt_go1:fqcnt_go1.go
+go_solutions/base_go/fqcnt_go1:go_solutions/base_go/fqcnt_go1.go
 	$(GO) build $<
 
 .PHONY: fqcnt_rs
@@ -30,8 +32,8 @@ rust: fqcnt_rs
 	@echo "Rust binaries are in ./bin/"
 
 .PHONY: fqcnt_fsharp
-fqcnt_fsharp:fsharp/fqcnt_fsharp.fs
-	dotnet build -c Release fsharp/
+fqcnt_fsharp:fsharp/base_fsharp/fqcnt_fsharp.fs
+	dotnet build -c Release fsharp/base_fsharp
 
 # Scala - amm
 # Ammnoite is required to compile and run the scala script. Please obtain from ammonite.io:

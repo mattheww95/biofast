@@ -1,4 +1,4 @@
-require "../lib/klib"
+require "../../../lib/klib"
 
 include Klib
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 
-include("../lib/Klib.jl")
+include("../../../lib/Klib.jl")
 
 function main(args)
 	if length(args) == 0
