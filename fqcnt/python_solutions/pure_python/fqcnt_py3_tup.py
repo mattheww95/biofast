@@ -4,6 +4,9 @@ Python IO can be made faster using either os.read or the lower level io function
 """
 #!/usr/bin/env python
 
+
+import sys, gzip
+
 class CountData:
 	__slots__ = 'name', 'seq', 'qual'
 	def __init__(self) -> None:
@@ -11,7 +14,6 @@ class CountData:
 		self.seq = 0
 		self.qual = 0
 	
-
 def read4lfq(fp, tall_tup):
 	seq = ""
 	qual = ""
@@ -27,10 +29,9 @@ def read4lfq(fp, tall_tup):
 		if len_seq != len_qual: raise Exception("diff len")
 		tall_tup.name += 1
 		tall_tup.seq += len_seq
-		tall_tup.qual += qual and len_qual or 0 # only took ~0.1 seconds off
+		tall_tup.qual += qual and len_qual or 0 # removing logic only took ~0.1 seconds off
 
 if __name__ == "__main__":
-	import sys, gzip
 	if len(sys.argv) == 1:
 		print("Usage: fqcnt.py <in.fq.gz>")
 		sys.exit(0)
