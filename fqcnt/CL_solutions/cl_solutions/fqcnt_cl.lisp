@@ -12,14 +12,19 @@
 ;; function to open plain text file and read it line by line
 (defun plain-text-fq (fp)
     "Open a plain text file and read it line by line"
-    (let ((in (open fp :if-does-not-exist :error)))
+    (let ((in (open fp)))
         (when in
-            (loop for line = (read-line in nil)
+            (loop for line = (read-line in)
                 while line do (format t "~a~%" line))
-                (close in)
-        ))
+        (close in)))
 )
 
+(defun plain-text-fq-2 (fp)
+    "An alternative way of reading a file in lisp"
+    (with-open-file (stream fp)
+        (loop for line = (read-line stream nil)
+            while line
+            collect line)))
 
 
 
@@ -33,4 +38,5 @@
     (eval file-arg))
 )
 
-(format t "~&~S~&" (reverse (setf out (cmd-line-args sb-ext:*posix-argv*))))
+;;(format t "~&~S~&" (reverse (setf out (cmd-line-args sb-ext:*posix-argv*))))
+(plain-text-fq "../../../biofast-data-v1/M_abscessus_HiSeq.fq")
